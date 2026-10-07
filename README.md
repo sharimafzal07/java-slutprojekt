@@ -1,27 +1,33 @@
-**Utförs av:** Sharim Afzal
+**Done by:** Sharim Afzal
 
 # java-slutprojekt
-Slutprojekt för Java-kursen - gymmedlemssystem
-## Projektidé
-Ett system för att hantera ett gyms medlemmar, med olika medlemstyper och deras rättigheter/rabatter.
-## Superklass
-- Namn: Medlem
-- Gemensamma fält: namn, medlemsnummer, ålder
-- Gemensamma metoder: beräknaMånadsavgift()
-## Subklasser
-1. StudentMedlem — lägre månadsavgift
-2. PremiumMedlem — högre avgift, tillgång till extra faciliteter
-3. PTMedlem — har en kopplad personlig tränare, högst avgift
+Final project for the Java course - gym membership system
+
+## Project idea
+A system for managing a gym's members, with different member types and their rights/discounts.
+
+## Superclass
+- Name: Member
+- Shared fields: name, memberNumber, age
+- Shared methods: `calculateMonthlyFee()`
+
+## Subclasses
+1. StudentMember — lower monthly fee
+2. PremiumMember — higher fee, access to extra facilities
+3. PTMember — has a linked personal trainer, highest fee
+
 ## Interface
-- Namn: Bokningsbar
-- Metod(er): boka()
-- Implementeras av: PremiumMedlem, PTMedlem
-## Meny
-1. Lägg till medlem
-2. Ta bort medlem
-3. Sök medlem (t.ex. på medlemsnummer eller typ)
-4. Visa total månadsintäkt (summerar beräknaMånadsavgift() för alla medlemmar)
-5. Avsluta
-## Felscenarion
-1. Ogiltig ålder vid skapande av medlem → IllegalArgumentException i konstruktorn
-2. Ogiltig inmatning (t.ex. text istället för siffra) vid inläsning → NumberFormatException fångas med try/catch
+- Name: Bookable
+- Method(s): `book()`
+- Implemented by: PremiumMember, PTMember
+
+## Menu
+1. Add member
+2. Remove member
+3. Search member (e.g. by member number or type)
+4. Show total monthly revenue (sums `calculateMonthlyFee()` for all members)
+5. Exit
+
+## Error scenarios
+1. Invalid age when creating a member → IllegalArgumentException in the constructor
+2. Invalid input (e.g. text instead of a number) when reading input → NumberFormatException caught with try/catch

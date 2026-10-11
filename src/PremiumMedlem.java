@@ -1,4 +1,4 @@
-public class PremiumMedlem extends Medlem {
+public class PremiumMedlem extends Medlem implements Bokningsbar {
     public PremiumMedlem(String namn, int medlemsnummer, int ålder) {
         super(namn, medlemsnummer, ålder);
     }
@@ -11,5 +11,9 @@ public class PremiumMedlem extends Medlem {
     @Override
     public void visaInfo() {
         System.out.println(getNamn() + " (Premium, medlem #" + getMedlemsnummer() + ")");
+    }
+    @Override
+    public void boka() {
+        System.out.println(getNamn() + " har bokat en gruppträning.");
     }
 }

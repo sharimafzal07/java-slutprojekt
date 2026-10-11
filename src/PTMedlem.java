@@ -1,4 +1,4 @@
-public class PTMedlem extends Medlem {
+public class PTMedlem extends Medlem implements Bokningsbar {
     private String personligTränare;
 
     public PTMedlem(String namn, int medlemsnummer, int ålder, String personligTränare) {
@@ -18,5 +18,9 @@ public class PTMedlem extends Medlem {
     @Override
     public void visaInfo() {
         System.out.println(getNamn() + " (PT-medlem, tränare: " + getPersonligTränare() + ")");
+    }
+    @Override
+    public void boka() {
+        System.out.println(getNamn() + " har bokat en PT-session med " + getPersonligTränare() + ".");
     }
 }

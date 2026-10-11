@@ -24,5 +24,8 @@ public class Medlem {
     public double beräknaMånadsavgift() {
         return 300;
     }
+    public void visaInfo() {
+        System.out.println(namn + " (medlem #" + medlemsnummer + ")");
+    }
 }
 }

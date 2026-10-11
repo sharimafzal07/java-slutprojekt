@@ -14,4 +14,9 @@ public class PTMedlem extends Medlem {
     public double beräknaMånadsavgift() {
         return 800;
     }
+
+    @Override
+    public void visaInfo() {
+        System.out.println(getNamn() + " (PT-medlem, tränare: " + getPersonligTränare() + ")");
+    }
 }

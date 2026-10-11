@@ -7,4 +7,9 @@ public class PremiumMedlem extends Medlem {
     public double beräknaMånadsavgift() {
         return 500;
     }
+
+    @Override
+    public void visaInfo() {
+        System.out.println(getNamn() + " (Premium, medlem #" + getMedlemsnummer() + ")");
+    }
 }

@@ -8,4 +8,9 @@ public class StudentMedlem extends Medlem {
     public double beräknaMånadsavgift() {
         return 150;
     }
+
+    @Override
+    public void visaInfo() {
+        System.out.println(getNamn() + " (Student, medlem #" + getMedlemsnummer() + ")");
+    }
 }

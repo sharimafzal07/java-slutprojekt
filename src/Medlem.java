@@ -28,4 +28,3 @@ public class Medlem {
         System.out.println(namn + " (medlem #" + medlemsnummer + ")");
     }
 }
-}

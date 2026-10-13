@@ -29,29 +29,49 @@ public class Main {
                 switch (val) {
                     case 1:
                         System.out.println("Vilken typ? 1=Student 2=Premium 3=PT");
-                        int typ = scanner.nextInt();
-                        scanner.nextLine();
-                        System.out.print("Namn: ");
-                        String nyttNamn = scanner.nextLine();
-                        System.out.print("Medlemsnummer: ");
-                        int nyttNummer = scanner.nextInt();
-                        System.out.print("Ålder: ");
-                        int nyÅlder = scanner.nextInt();
-
+                        int typ = -1;
+                        boolean giltigTyp = true;
                         try {
-                            if (typ == 1) {
-                                medlemmar.add(new StudentMedlem(nyttNamn, nyttNummer, nyÅlder));
-                            } else if (typ == 2) {
-                                medlemmar.add(new PremiumMedlem(nyttNamn, nyttNummer, nyÅlder));
-                            } else if (typ == 3) {
-                                System.out.print("Tränarens namn: ");
-                                String tränare = scanner.nextLine();
-                                medlemmar.add(new PTMedlem(nyttNamn, nyttNummer, nyÅlder, tränare));
-                            } else {
-                                System.out.println("Ogiltig typ.");
+                            typ = Integer.parseInt(scanner.nextLine());
+                        } catch (NumberFormatException e) {
+                            System.out.println("Ogiltig inmatning för typ.");
+                            giltigTyp = false;
+                        }
+
+                        if (giltigTyp) {
+                            System.out.print("Namn: ");
+                            String nyttNamn = scanner.nextLine();
+                            System.out.print("Medlemsnummer: ");
+                            int nyttNummer = -1;
+                            try {
+                                nyttNummer = Integer.parseInt(scanner.nextLine());
+                            } catch (NumberFormatException e) {
+                                System.out.println("Ogiltig inmatning för medlemsnummer.");
                             }
-                        } catch (IllegalArgumentException e) {
-                            System.out.println("Fel: " + e.getMessage());
+
+                            System.out.print("Ålder: ");
+                            int nyÅlder = -1;
+                            try {
+                                nyÅlder = Integer.parseInt(scanner.nextLine());
+                            } catch (NumberFormatException e) {
+                                System.out.println("Ogiltig inmatning för ålder.");
+                            }
+
+                            try {
+                                if (typ == 1) {
+                                    medlemmar.add(new StudentMedlem(nyttNamn, nyttNummer, nyÅlder));
+                                } else if (typ == 2) {
+                                    medlemmar.add(new PremiumMedlem(nyttNamn, nyttNummer, nyÅlder));
+                                } else if (typ == 3) {
+                                    System.out.print("Tränarens namn: ");
+                                    String tränare = scanner.nextLine();
+                                    medlemmar.add(new PTMedlem(nyttNamn, nyttNummer, nyÅlder, tränare));
+                                } else {
+                                    System.out.println("Ogiltig typ.");
+                                }
+                            } catch (IllegalArgumentException e) {
+                                System.out.println("Fel: " + e.getMessage());
+                            }
                         }
                         break;
                     case 2:
@@ -61,7 +81,12 @@ public class Main {
                         }
 
                         System.out.print("Vilket medlemsnummer ska tas bort? ");
-                        int nummerAttTaBort = scanner.nextInt();
+                        int nummerAttTaBort = -1;
+                        try {
+                            nummerAttTaBort = Integer.parseInt(scanner.nextLine());
+                        } catch (NumberFormatException e) {
+                            System.out.println("Ogiltig inmatning.");
+                        }
 
                         for (int i = 0; i < medlemmar.size(); i++) {
                             if (medlemmar.get(i).getMedlemsnummer() == nummerAttTaBort) {
@@ -78,7 +103,12 @@ public class Main {
                         }
 
                         System.out.print("Vilket medlemsnummer vill du söka efter? ");
-                        int nummerAttSöka = scanner.nextInt();
+                        int nummerAttSöka = -1;
+                        try {
+                            nummerAttSöka = Integer.parseInt(scanner.nextLine());
+                        } catch (NumberFormatException e) {
+                            System.out.println("Ogiltig inmatning.");
+                        }
                         boolean hittad = false;
 
                         for (int i = 0; i < medlemmar.size(); i++) {
@@ -110,7 +140,12 @@ public class Main {
                         }
 
                         System.out.print("Vilket medlemsnummer vill boka? ");
-                        int nummerAttBoka = scanner.nextInt();
+                        int nummerAttBoka = -1;
+                        try {
+                            nummerAttBoka = Integer.parseInt(scanner.nextLine());
+                        } catch (NumberFormatException e) {
+                            System.out.println("Ogiltig inmatning.");
+                        }
 
                         for (int i = 0; i < medlemmar.size(); i++) {
                             Medlem m = medlemmar.get(i);
@@ -126,10 +161,10 @@ public class Main {
                         break;
                     default:
                         System.out.println("Ogiltigt val, försök igen.");
-                            }
-                        }
                 }
             }
         }
+    }
+}
 
 

@@ -43,7 +43,8 @@ public class Main {
                 case 2:
                     System.out.println("Nuvarande medlemmar:");
                     for (int i = 0; i < medlemmar.size(); i++) {
-                        medlemmar.get(i).visaInfo(); }
+                        medlemmar.get(i).visaInfo();
+                    }
 
                     System.out.print("Vilket medlemsnummer ska tas bort? ");
                     int nummerAttTaBort = scanner.nextInt();
@@ -79,6 +80,11 @@ public class Main {
                     }
                     break;
                 case 4:
+                    double totalIntäkt = 0;
+                    for (int i = 0; i < medlemmar.size(); i++) {
+                        totalIntäkt = totalIntäkt + medlemmar.get(i).beräknaMånadsavgift();
+                    }
+                    System.out.println("Total månadsintäkt: " + totalIntäkt + " kr");
                     break;
                 case 5:
                     fortsätt = false;

@@ -27,6 +27,7 @@ A system for managing a gym's members, with different member types and their rig
 3. Search member (e.g. by member number or type)
 4. Show total monthly revenue (sums `calculateMonthlyFee()` for all members)
 5. Exit
+6. Book member (checks if the member type supports booking via the Bookable interface)
 
 ## Error scenarios
 1. Invalid age when creating a member → IllegalArgumentException in the constructor

@@ -1,12 +1,16 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Main class: runs the interactive console menu for the gym membership system.
+// Holds the collection of members (ArrayList) and the menu loop with all user actions.
 public class Main {
     public static void main(String[] args) {
+        // Collection of all members, can contain any subclass of Medlem (polymorphism)
         ArrayList<Medlem> medlemmar = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         boolean fortsätt = true;
 
+        // Menu loop: keeps running until the user chooses to exit (option 5)
         while (fortsätt) {
             System.out.println("1. Lägg till medlem");
             System.out.println("2. Ta bort medlem");
@@ -18,6 +22,7 @@ public class Main {
             int val = -1;
             boolean giltigInmatning = true;
 
+            // Exception handling: catches invalid (non-numeric) menu input instead of crashing
             try {
                 val = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
@@ -25,9 +30,11 @@ public class Main {
                 giltigInmatning = false;
             }
 
+            // Only run the menu action if the input was actually a valid number
             if (giltigInmatning) {
                 switch (val) {
                     case 1:
+                        // Add member: ask for type, then name/number/age, then create the right subclass
                         System.out.println("Vilken typ? 1=Student 2=Premium 3=PT");
                         int typ = -1;
                         boolean giltigTyp = true;
@@ -38,6 +45,7 @@ public class Main {
                             giltigTyp = false;
                         }
 
+                        // Stop early if the type itself was invalid, instead of asking for more details
                         if (giltigTyp) {
                             System.out.print("Namn: ");
                             String nyttNamn = scanner.nextLine();
@@ -57,6 +65,8 @@ public class Main {
                                 System.out.println("Ogiltig inmatning för ålder.");
                             }
 
+                            // Creates the right subclass based on the chosen type (StudentMedlem/PremiumMedlem/PTMedlem)
+                            // Catches IllegalArgumentException thrown by Medlem's constructor if age is invalid
                             try {
                                 if (typ == 1) {
                                     medlemmar.add(new StudentMedlem(nyttNamn, nyttNummer, nyÅlder));
@@ -75,6 +85,7 @@ public class Main {
                         }
                         break;
                     case 2:
+                        // Remove member: lists all members (polymorphism via visaInfo()), then searches by member number
                         System.out.println("Nuvarande medlemmar:");
                         for (int i = 0; i < medlemmar.size(); i++) {
                             medlemmar.get(i).visaInfo();
@@ -97,6 +108,7 @@ public class Main {
                         }
                         break;
                     case 3:
+                        // Search member: finds a member by member number and shows their info
                         System.out.println("Nuvarande medlemmar:");
                         for (int i = 0; i < medlemmar.size(); i++) {
                             medlemmar.get(i).visaInfo();
@@ -124,6 +136,8 @@ public class Main {
                         }
                         break;
                     case 4:
+                        // Total monthly revenue: aggregates real data from the ArrayList.
+                        // beräknaMånadsavgift() is polymorphic — same call, different result per subclass.
                         double totalIntäkt = 0;
                         for (int i = 0; i < medlemmar.size(); i++) {
                             totalIntäkt = totalIntäkt + medlemmar.get(i).beräknaMånadsavgift();
@@ -131,9 +145,12 @@ public class Main {
                         System.out.println("Total månadsintäkt: " + totalIntäkt + " kr");
                         break;
                     case 5:
+                        // Exit: stops the menu loop
                         fortsätt = false;
                         break;
                     case 6:
+                        // Book: finds a member by number, then checks if they implement Bokningsbar (interface)
+                        // before allowing a booking. This is polymorphic use of the interface.
                         System.out.println("Nuvarande medlemmar:");
                         for (int i = 0; i < medlemmar.size(); i++) {
                             medlemmar.get(i).visaInfo();
@@ -166,5 +183,3 @@ public class Main {
         }
     }
 }
-
-

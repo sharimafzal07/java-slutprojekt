@@ -33,7 +33,7 @@ A system for managing a gym's members, with different member types and their rig
 1. Invalid age when creating a member → IllegalArgumentException in the constructor
 2. Invalid input (e.g. text instead of a number) when reading input → NumberFormatException caught with try/catch
 
-## Motivering
+## Motivation
 I chose to use an interface (Bookable) instead of adding a boka() method directly 
 in the Medlem superclass, since not all member types have booking rights — only 
 Premium and PT members can book. An interface lets me add that ability to only 
